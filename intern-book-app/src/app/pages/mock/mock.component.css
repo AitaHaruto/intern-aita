@@ -1,0 +1,53 @@
+/* ヘッダーの設定 */
+.toolbar {
+  background-color: blue;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* 画面全体のレイアウト調整 */
+.container {
+  margin-top: 80px; /* 固定ヘッダーに被らないようにする余白 */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* カード同士の隙間 */
+}
+
+/* カードのデザイン */
+mat-card {
+  padding: 16px;
+}
+
+.full-width {
+  display: block;
+  width: 100%;
+  max-width: 400px; /* 入力欄が広がりすぎないように制限 */
+  margin-bottom: 8px;
+}
+
+/* ボタンを右寄せにする */
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.score {
+  font-weight: bold;
+  margin-top: 8px;
+}
+/* 下のカード内の書籍名（タイトル）のフォントを太くする */
+.book-card h3 {
+  font-weight: bold;
+  font-size: 1.2rem; /* お好みで少し大きく見やすくします */
+  margin-bottom: 8px;
+}
