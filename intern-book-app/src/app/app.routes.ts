@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { MockComponent } from './pages/mock/mock.component';
+import { HeaderComponent } from './pages/header/header.component';
+
 
 export const routes: Routes = [
-  { path: '', component: MockComponent } // ← ここが path: '' になっていること
+  { path: '', component: HeaderComponent } // ← ここが path: '' になっていること
 ];
