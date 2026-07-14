@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HeaderComponent } from './pages/header/header.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 
 export const routes: Routes = [
-  { path: '', component: HeaderComponent } // ← ここが path: '' になっていること
+  { path: '', component: ToolbarComponent } // ← ここが path: '' になっていること
 ];
