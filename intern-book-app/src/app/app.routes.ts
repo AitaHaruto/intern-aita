@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  { path: '', component: ToolbarComponent } // ← ここが path: '' になっていること
+
+  { path: '', component: DashboardComponent },
 ];

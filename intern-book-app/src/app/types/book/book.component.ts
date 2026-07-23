@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-export interface book {
+export interface Book {
   name: string;
   detail: string;
   evaluation: number;

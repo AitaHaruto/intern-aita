@@ -1,37 +1,21 @@
-import { Component } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { book } from '../../types/book/book.component';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { Book } from '../../types/book/book.component'; // ← BookComponent ではなく Book を指定
 
 @Component({
   selector: 'app-card',
-  standalone: true,
-  imports: [MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule, CommonModule],
+  standalone: true, // スタンドアロンコンポーネントの場合は必要です
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule
+  ],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrls: ['./card.component.css']
 })
 export class CardComponent {
-
-  bookList: book[] = [
-    {
-      name: 'アンドロイドは電気羊の夢を見るか？',
-      detail: '第三次大戦後の未来、サンフランシスコを舞台に賞金稼ぎのリック・デッカードが、火星から逃亡してきた8体のアンドロイドを「処理」するというあらすじ',
-      evaluation: 90,
-    },
-    {
-      name: '岩田さん：岩田聡はこんなことを話していた。',
-      detail: '任天堂の元社長、岩田聡さんのことばをまとめた本',
-      evaluation: 90,
-
-    }
-  ];
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  // 親から受け取る1冊分の書籍データ（型を Book に変更）
+  @Input() book!: Book;
 }
