@@ -1,12 +1,15 @@
+<mat-card class="book-card">
+    <mat-card-header>
+        <mat-card-title>{{ book.name }}</mat-card-title>
+        <mat-card-subtitle>評価: {{ book.evaluation }}点</mat-card-subtitle>
+    </mat-card-header>
 
-    <mat-card class="book-card">
-        <mat-card-content>
-            <h3>{{book.name}}</h3>
-            <p>{{book.detail}}</p>
-            <p class="score">評価: {{book.evaluation}}点</p>
-        </mat-card-content>
-        <mat-card-actions class="button-container">
-            <!-- 赤い削除ボタン -->
-            <button mat-raised-button color="warn">削除</button>
-        </mat-card-actions>
-    </mat-card>
+    <mat-card-content>
+        <p>{{ book.detail }}</p>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+        <!-- 赤色の削除ボタンを追加 -->
+        <button mat-button color="warn" (click)="onDelete()">削除</button>
+    </mat-card-actions>
+</mat-card>
