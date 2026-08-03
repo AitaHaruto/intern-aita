@@ -10,32 +10,30 @@
             <!-- 書籍名入力 -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>書籍名</mat-label>
-                <input matInput>
+                <input matInput name="name" [(ngModel)]="newBook.name">
             </mat-form-field>
 
             <!-- あらすじ入力 (複数行) -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>あらすじ</mat-label>
-                <textarea matInput rows="3"></textarea>
+                <textarea matInput rows="3" name="detail" [(ngModel)]="newBook.detail"></textarea>
             </mat-form-field>
 
             <!-- 評価点入力 -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>評価点</mat-label>
-                <input matInput type="number">
+                <input matInput type="number" name="evaluation" [(ngModel)]="newBook.evaluation">
             </mat-form-field>
         </mat-card-content>
 
         <mat-card-actions class="button-container">
-            <!-- 青い追加ボタン -->
-            <button mat-raised-button color="primary">追加</button>
+            <!-- 青い追加ボタン：(click) イベントで addBook() を発火 -->
+            <button mat-raised-button color="primary" (click)="addBook()">追加</button>
         </mat-card-actions>
     </mat-card>
 
-<!-- 親側で *ngFor を使い、子コンポーネントを繰り返し表示 -->
- <app-card
-  *ngFor="let book of bookList"
-  [book]="book">
-</app-card>
+    <!-- 親側で *ngFor を使い、子コンポーネントを繰り返し表示 -->
+    <app-card *ngFor="let book of bookList" [book]="book">
+    </app-card>
 
 </div>
