@@ -4,7 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // 1. FormsModule をインポート
+import { FormsModule } from '@angular/forms';
 
 import { Book } from '../../types/book/book.component';
 import { CardComponent } from '../card/card.component';
@@ -19,7 +19,7 @@ import { CardComponent } from '../card/card.component';
     MatInputModule,
     CommonModule,
     CardComponent,
-    FormsModule // 2. imports に FormsModule を追加
+    FormsModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -38,7 +38,6 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  // 3. フォームバインディング用のプロパティ定義
   newBook: Book = {
     name: '',
     detail: '',
@@ -50,21 +49,19 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // 4. 追加ボタンクリック時の処理
   addBook(): void {
-    // 簡易入力チェック（名前が空なら追加しない）
     if (!this.newBook.name.trim()) {
       return;
     }
-
-    // 配列の参照渡しによる崩れを防ぐため、コピーを追加
     this.bookList.push({ ...this.newBook });
-
-    // フォームの入力欄をクリア
     this.resetForm();
   }
 
-  // フォームリセット処理
+  // 追加：インデックスを受け取って指定した要素を削除する
+  deleteBook(index: number): void {
+    this.bookList.splice(index, 1);
+  }
+
   private resetForm(): void {
     this.newBook = {
       name: '',

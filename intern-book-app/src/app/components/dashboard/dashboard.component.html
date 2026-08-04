@@ -1,6 +1,6 @@
 <div class="container">
 
-    <!-- 2. 書籍登録フォーム（上のカード） -->
+    <!-- 書籍登録フォーム -->
     <mat-card class="form-card">
         <mat-card-header>
             <mat-card-title>書籍登録</mat-card-title>
@@ -13,7 +13,7 @@
                 <input matInput name="name" [(ngModel)]="newBook.name">
             </mat-form-field>
 
-            <!-- あらすじ入力 (複数行) -->
+            <!-- あらすじ入力 -->
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>あらすじ</mat-label>
                 <textarea matInput rows="3" name="detail" [(ngModel)]="newBook.detail"></textarea>
@@ -27,13 +27,12 @@
         </mat-card-content>
 
         <mat-card-actions class="button-container">
-            <!-- 青い追加ボタン：(click) イベントで addBook() を発火 -->
             <button mat-raised-button color="primary" (click)="addBook()">追加</button>
         </mat-card-actions>
     </mat-card>
 
-    <!-- 親側で *ngFor を使い、子コンポーネントを繰り返し表示 -->
-    <app-card *ngFor="let book of bookList" [book]="book">
+    <!-- *ngFor で index も同時に受け取る（let i = index） -->
+    <app-card *ngFor="let book of bookList; let i = index" [book]="book" (delete)="deleteBook(i)">
     </app-card>
 
 </div>
