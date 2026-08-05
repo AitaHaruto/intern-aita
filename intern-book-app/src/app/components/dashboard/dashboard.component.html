@@ -30,6 +30,7 @@
             <button mat-raised-button color="primary" (click)="addBook()">追加</button>
         </mat-card-actions>
     </mat-card>
+    <p *ngIf="bookList.length === 0" class="no-data-text">データがありません</p>
 
     <!-- *ngFor で index も同時に受け取る（let i = index） -->
     <app-card *ngFor="let book of bookList; let i = index" [book]="book" (delete)="deleteBook(i)">
