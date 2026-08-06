@@ -3,11 +3,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Book } from '../../types/book/book.component';
 import { CardComponent } from '../card/card.component';
+// 1. DialogRemoveComponent をインポート（パスは実際の配置に合わせて調整してください）
+import { DialogRemoveComponent } from '../dialog-remove/dialog-remove.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +19,7 @@ import { CardComponent } from '../card/card.component';
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatDialogModule,
     MatInputModule,
     CommonModule,
     CardComponent,
@@ -44,7 +48,8 @@ export class DashboardComponent implements OnInit {
     evaluation: 0
   };
 
-  constructor() { }
+  // 2. constructor で MatDialog を受取るように修正
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -57,9 +62,19 @@ export class DashboardComponent implements OnInit {
     this.resetForm();
   }
 
-  // 追加：インデックスを受け取って指定した要素を削除する
   deleteBook(index: number): void {
-    this.bookList.splice(index, 1);
+    // 1. ダイアログを表示
+    const dialogRef = this.dialog.open(DialogRemoveComponent, {
+      width: '350px'
+    });
+
+    // 2. ダイアログが閉じた後の結果を受け取る
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      // 「はい」が押されて result が true の場合のみ削除を実行
+      if (result) {
+        this.bookList.splice(index, 1);
+      }
+    });
   }
 
   private resetForm(): void {

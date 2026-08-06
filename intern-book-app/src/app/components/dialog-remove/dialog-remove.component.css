@@ -1,0 +1,47 @@
+/* ダイアログ全体の余白調整 */
+:host {
+    display: block;
+    padding: 8px 12px;
+}
+
+/* タイトルのスタイル */
+.dialog-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #1d1b20;
+    margin-bottom: 8px;
+}
+
+/* 本文テキストのスタイル */
+.dialog-message {
+    font-size: 14px;
+    color: #49454f;
+    margin: 0;
+}
+
+/* ボタン配置エリアの余白 */
+.dialog-actions {
+    padding-top: 16px;
+    gap: 8px;
+}
+
+/* 「いいえ」ボタン (テキストスタイル) */
+.btn-cancel {
+    color: #0b57d0;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+/* 「はい」ボタン (画像のような薄い青の塗り丸ボタン) */
+.btn-ok {
+    background-color: #d3e3fd !important;
+    color: #041e49 !important;
+    border-radius: 20px !important;
+    font-weight: 600;
+    padding: 0 20px !important;
+}
+
+/* ボタンホバー時 */
+.btn-ok:hover {
+    background-color: #c2d7fa !important;
+}

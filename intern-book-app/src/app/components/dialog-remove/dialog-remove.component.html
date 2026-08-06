@@ -1,0 +1,17 @@
+<h2 mat-dialog-title class="dialog-title">確認</h2>
+
+<mat-dialog-content class="dialog-content">
+    <p class="dialog-message">このカードを削除しますか？</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+    <!-- キャンセルボタン（テキスト形式） -->
+    <button mat-button class="btn-cancel" [mat-dialog-close]="false">
+        いいえ
+    </button>
+
+    <!-- 確定ボタン（丸みのある塗りの背景ボタン） -->
+    <button mat-flat-button class="btn-ok" [mat-dialog-close]="true" cdkFocusInitial>
+        はい
+    </button>
+</mat-dialog-actions>
