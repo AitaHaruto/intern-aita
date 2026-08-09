@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MessageService } from '../services/message.service';
+import { MessageComponent } from '../message/message.component';
 
 import { Book } from '../../types/book/book.component';
 import { CardComponent } from '../card/card.component';
@@ -23,7 +25,9 @@ import { DialogRemoveComponent } from '../dialog-remove/dialog-remove.component'
     MatInputModule,
     CommonModule,
     CardComponent,
-    FormsModule
+    FormsModule,
+    MessageComponent
+
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
@@ -49,7 +53,9 @@ export class DashboardComponent implements OnInit {
   };
 
   // 2. constructor で MatDialog を受取るように修正
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -59,13 +65,15 @@ export class DashboardComponent implements OnInit {
       return;
     }
     this.bookList.push({ ...this.newBook });
+    this.messageService.add(`書籍「${this.newBook.name}」を追加しました`);
     this.resetForm();
   }
 
   deleteBook(index: number): void {
     // 1. ダイアログを表示
     const dialogRef = this.dialog.open(DialogRemoveComponent, {
-      width: '350px'
+      width: '350px',
+      autoFocus: false
     });
 
     // 2. ダイアログが閉じた後の結果を受け取る

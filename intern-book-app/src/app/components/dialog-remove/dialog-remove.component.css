@@ -32,16 +32,28 @@
     border-radius: 20px;
 }
 
-/* 「はい」ボタン (画像のような薄い青の塗り丸ボタン) */
+/* 「はい」ボタン (背景色を透明に指定) */
 .btn-ok {
-    background-color: #d3e3fd !important;
-    color: #041e49 !important;
+    background-color: transparent !important;
+    color: #0b57d0 !important;
+    /* 「いいえ」と同じ青色の文字にする場合 */
     border-radius: 20px !important;
     font-weight: 600;
     padding: 0 20px !important;
+    box-shadow: none !important;
 }
 
-/* ボタンホバー時 */
-.btn-ok:hover {
-    background-color: #c2d7fa !important;
+/* ホバー・フォーカス時も背景色を変えない（透明のまま） */
+.btn-ok:hover,
+.btn-ok:focus,
+.btn-ok:focus-visible {
+    background-color: transparent !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Angular Material 内部のオーバーレイ（グレーや青の被せ物）を消去 */
+::ng-deep .btn-ok .mat-mdc-button-persistent-ripple::before,
+::ng-deep .btn-ok .mdc-button__ripple::before {
+    display: none !important;
 }
